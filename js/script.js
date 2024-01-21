@@ -13,7 +13,7 @@ function TimeInMinSec(totalSeconds) {
   }
 async function getSongs(folder){
     currentFolder=folder;
-    let a = await fetch(`https://raw.githubusercontent.com/AdityaGodambe-555/SpotifyMusicPlayerClone/main/${currentFolder}/`)
+    let a = await fetch(`http://127.0.0.1:3000/${currentFolder}/`)
     let response =await a.text()
     // console.log(response);
     let div = document.createElement('div')
@@ -71,7 +71,7 @@ const playMusic= (track,pause=false)=>{
 }
 
 async function displayAlbums(){
-    let a = await fetch(`https://raw.githubusercontent.com/AdityaGodambe-555/SpotifyMusicPlayerClone/main/songs`)
+    let a = await fetch(`http://127.0.0.1:3000/songs/`)
     let response =await a.text()
     let div = document.createElement('div')
     div.innerHTML=response
@@ -85,7 +85,7 @@ async function displayAlbums(){
             if (e.href.includes("/songs") && !e.href.includes(".htaccess")) {
                 let folder = e.href.split('/').splice(-2)[0]
                 //Get the meta data of the folder from the json file
-                let a = await fetch(`https://raw.githubusercontent.com/AdityaGodambe-555/SpotifyMusicPlayerClone/main/songs/${folder}/info.json`)
+                let a = await fetch(`http://127.0.0.1:3000/songs/${folder}/info.json`)
                 let response = await a.json()
                 //console.log(response)
                 cardContainer.innerHTML= cardContainer.innerHTML + 
